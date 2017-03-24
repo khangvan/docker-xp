@@ -2,7 +2,7 @@
 
 ## Build local
 ```
-git clone https://github.com/enonic/docker-xp-app.git
+git clone https://github.com/enonic/docker-xp.git
 cd docker-xp-app/<desired version>
 docker build --rm -t enonic/xp-app:<desired version> .
 ```
