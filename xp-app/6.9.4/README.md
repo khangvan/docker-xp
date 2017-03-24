@@ -2,7 +2,7 @@
 
 ## Build local
 
-    git clone https://github.com/enonic/docker-xp-app.git
+    git clone https://github.com/enonic/docker-xp.git
     cd docker-xp-app/6.9.4
     docker build --rm -t enonic/xp-app:6.9.4 .
 
