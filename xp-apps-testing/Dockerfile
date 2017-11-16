@@ -1,5 +1,5 @@
 # Base image
-FROM selenium/standalone-chrome:3.7.1
+FROM selenium/standalone-firefox:3.7.1
 
 USER root
 
