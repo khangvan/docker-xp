@@ -1,7 +1,29 @@
 # Base image
-FROM enonic/java8
+FROM selenium/standalone-chrome:3.7.1
 
 USER root
+
+# Set locale
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+# Accecpt Oracle license before installing java
+RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+
+# Install java
+RUN apt-get update
+RUN apt-get -y install software-properties-common
+RUN add-apt-repository -y ppa:webupd8team/java
+RUN apt-get update
+RUN apt-get -y install oracle-java8-installer oracle-java8-set-default
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /etc/environment
+
+
+
+
 
 RUN apt-get update -qqy
 
@@ -21,11 +43,4 @@ RUN npm install --global gulp
 RUN apt-get install -y git
 
 
-RUN CHROME_VERSION="google-chrome-stable"
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-&& echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-&& apt-get update -qqy \
-&& apt-get -qqy install \
-${CHROME_VERSION:-google-chrome-stable} \
-&& rm /etc/apt/sources.list.d/google-chrome.list \
-&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+USER seluser
