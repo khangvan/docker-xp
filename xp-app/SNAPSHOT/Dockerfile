@@ -1,3 +1,4 @@
+# Trigger build
 # Base image
 FROM enonic/java8
 
