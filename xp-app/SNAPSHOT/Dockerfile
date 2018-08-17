@@ -2,9 +2,9 @@
 # Base image
 FROM enonic/java8
 
-MAINTAINER Erik Kaareng-sunde <esu@enonic.com>
+MAINTAINER Jørgen Sivesind (jsi@enonic.com)
 
-ENV XP_DISTRO_VERSION 6.16.0-SNAPSHOT
+ENV XP_DISTRO_VERSION 7.0.0-SNAPSHOT
 ENV XP_ROOT /enonic-xp
 ENV XP_HOME /enonic-xp/home
 ENV XP_USER enonic-xp
